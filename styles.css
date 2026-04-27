@@ -870,18 +870,31 @@ footer p { color: rgba(255,255,255,0.45); font-size: 0.88rem; }
 
 @media (max-width: 640px) {
   .nav-links { display: none; }
-  .hamburger { display: block; }
+  .hamburger { display: flex; }
 
-  /* Center wordmark in nav, hide small icon */
-  .logo-img { display: none; }
+  /* Nav: icon left, wordmark centered, hamburger right */
   .nav-inner { position: relative; }
-  .logo {
+  .logo-img { display: block; }
+  .logo-wordmark {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    height: 5rem;
+    top: 50%;
+    margin-top: -2.5rem;
   }
-  .logo-wordmark {
-    height: 4.5rem;
+
+  /* Sliding mobile menu */
+  .mobile-menu {
+    display: flex;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    padding: 0 24px;
+  }
+  .mobile-menu.open {
+    max-height: 400px;
+    padding: 16px 24px 24px;
   }
 
   section { padding: 64px 0; }
@@ -899,11 +912,10 @@ footer p { color: rgba(255,255,255,0.45); font-size: 0.88rem; }
     font-size: clamp(3rem, 16vw, 5rem);
   }
 
-  /* Mobile hero fixes */
+  /* Mobile hero */
   .hero-content {
     padding: 0 16px;
     padding-top: 20px;
-    text-align: center;
   }
 
   .hero-sub {
@@ -912,12 +924,12 @@ footer p { color: rgba(255,255,255,0.45); font-size: 0.88rem; }
   }
 
   .hero-btns {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .hero-social {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 10px;
   }
 
@@ -926,9 +938,9 @@ footer p { color: rgba(255,255,255,0.45); font-size: 0.88rem; }
   }
 
   .hero-title-img {
-    width: clamp(420px, 95vw, 560px);
-    margin-top: -130px;
-    margin-bottom: -110px;
+    width: clamp(380px, 95vw, 560px);
+    margin-top: -150px;
+    margin-bottom: -130px;
     margin-left: auto;
     margin-right: auto;
   }
