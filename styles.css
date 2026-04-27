@@ -878,4 +878,12 @@ footer p { color: rgba(255,255,255,0.45); font-size: 0.88rem; }
   .hero-title {
     font-size: clamp(3rem, 16vw, 5rem);
   }
+
+  .hero-content {
+    text-align: center;
+  }
+  .hero-btns,
+  .hero-social {
+    justify-content: center;
+  }
 }
