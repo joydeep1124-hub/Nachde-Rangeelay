@@ -86,7 +86,7 @@ form.addEventListener('submit', async (e) => {
   const { error } = await supabase.from('contact_submissions').insert({
     name: nameEl.value.trim(),
     email: emailEl.value.trim(),
-    phone: phoneEl.value.trim() || null,
+    phone: phoneEl.value.trim(),
     interest: interestEl.value || null,
     message: messageEl.value.trim() || null,
   });
