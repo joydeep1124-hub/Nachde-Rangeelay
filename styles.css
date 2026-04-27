@@ -250,8 +250,8 @@ h2 {
   width: clamp(400px, 75vw, 900px);
   height: auto;
   object-fit: contain;
-  margin-top: -80px;
-  margin-bottom: -60px;
+  margin-top: -140px;
+  margin-bottom: -120px;
   animation: fadeUp 0.9s 0.1s ease both;
   display: block;
 }
