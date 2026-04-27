@@ -247,11 +247,10 @@ h2 {
 
 /* MAIN TITLE */
 .hero-title-img {
-  width: clamp(600px, 110vw, 1400px);
+  width: clamp(400px, 75vw, 900px);
   height: auto;
   object-fit: contain;
   margin-bottom: 28px;
-  margin-left: -5vw;
   animation: fadeUp 0.9s 0.1s ease both;
   display: block;
 }
