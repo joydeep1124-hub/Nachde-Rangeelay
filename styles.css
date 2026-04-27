@@ -99,7 +99,7 @@ h2 {
 }
 
 .logo-wordmark {
-  height: 5.15rem;
+  height: 15rem;
   width: auto;
   object-fit: contain;
 }
@@ -230,7 +230,7 @@ h2 {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 24px;
-  padding-top: 110px;
+  padding-top: 20px;
   will-change: transform;
 }
 
@@ -246,6 +246,16 @@ h2 {
 }
 
 /* MAIN TITLE */
+.hero-title-img {
+  width: clamp(400px, 75vw, 900px);
+  height: auto;
+  object-fit: contain;
+  margin-top: -200px;
+  margin-bottom: -170px;
+  animation: fadeUp 0.9s 0.1s ease both;
+  display: block;
+}
+
 .hero-title {
   font-family: 'Pacifico', cursive;
   font-size: clamp(4rem, 11vw, 8.5rem);
