@@ -142,10 +142,16 @@ h2 {
   display: none;
   flex-direction: column;
   list-style: none;
-  background: rgba(10,10,10,0.96);
+  background: rgba(10,10,10,0.97);
   border-top: 1px solid rgba(45,191,176,0.15);
-  padding: 16px 24px;
+  padding: 16px 24px 24px;
   gap: 16px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
 }
 .mobile-menu.open { display: flex; }
 .mobile-menu a { font-size: 1rem; font-weight: 500; color: rgba(255,255,255,0.8); }
@@ -883,7 +889,7 @@ footer p { color: rgba(255,255,255,0.45); font-size: 0.88rem; }
 
   /* Mobile hero fixes */
   .logo-wordmark {
-    height: 2.2rem;
+    height: 3.5rem;
   }
 
   .hero-content {
@@ -912,8 +918,10 @@ footer p { color: rgba(255,255,255,0.45); font-size: 0.88rem; }
   }
 
   .hero-title-img {
-    width: clamp(260px, 80vw, 400px);
+    width: clamp(300px, 88vw, 480px);
     margin-top: -80px;
     margin-bottom: -70px;
+    margin-left: auto;
+    margin-right: -10px;
   }
 }
