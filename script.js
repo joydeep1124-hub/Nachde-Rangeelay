@@ -7,29 +7,9 @@ window.addEventListener('scroll', () => {
 // ===== MOBILE MENU =====
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
-
-function openMenu() {
-  mobileMenu.classList.add('open');
-  hamburger.setAttribute('aria-expanded', 'true');
-}
-function closeMenu() {
-  mobileMenu.classList.remove('open');
-  hamburger.setAttribute('aria-expanded', 'false');
-}
-
-hamburger.addEventListener('click', (e) => {
-  e.stopPropagation();
-  mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
-});
-
+hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
 mobileMenu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', closeMenu);
-});
-
-document.addEventListener('click', (e) => {
-  if (mobileMenu.classList.contains('open') && !navbar.contains(e.target)) {
-    closeMenu();
-  }
+  link.addEventListener('click', () => mobileMenu.classList.remove('open'));
 });
 
 // ===== HERO VIDEO SCROLL FADE =====
