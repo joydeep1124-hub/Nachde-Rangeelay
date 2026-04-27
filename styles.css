@@ -872,9 +872,14 @@ footer p { color: rgba(255,255,255,0.45); font-size: 0.88rem; }
   }
 
   /* Mobile hero fixes */
+  .logo-wordmark {
+    height: 2.2rem;
+  }
+
   .hero-content {
     padding: 0 16px;
     padding-top: 20px;
+    text-align: center;
   }
 
   .hero-sub {
@@ -882,9 +887,13 @@ footer p { color: rgba(255,255,255,0.45); font-size: 0.88rem; }
     max-width: 100%;
   }
 
+  .hero-btns {
+    justify-content: center;
+  }
+
   .hero-social {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 10px;
   }
 
@@ -893,8 +902,8 @@ footer p { color: rgba(255,255,255,0.45); font-size: 0.88rem; }
   }
 
   .hero-title-img {
-    width: clamp(300px, 95vw, 500px);
-    margin-top: -120px;
-    margin-bottom: -100px;
+    width: clamp(260px, 80vw, 400px);
+    margin-top: -80px;
+    margin-bottom: -70px;
   }
 }
