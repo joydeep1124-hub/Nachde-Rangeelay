@@ -246,25 +246,13 @@ h2 {
 }
 
 /* MAIN TITLE */
-.hero-title {
-  font-family: 'Pacifico', cursive;
-  font-size: clamp(4rem, 11vw, 8.5rem);
-  font-weight: 400;
-  line-height: 1.0;
+.hero-title-img {
+  width: clamp(320px, 70vw, 780px);
+  height: auto;
+  object-fit: contain;
   margin-bottom: 28px;
-  color: var(--white);
   animation: fadeUp 0.9s 0.1s ease both;
-  letter-spacing: -1px;
-}
-
-.hero-title-accent {
   display: block;
-  color: var(--teal);
-  animation: titlePulse 4s ease-in-out infinite alternate;
-  text-shadow:
-    0 0 30px rgba(45,191,176,0.6),
-    0 0 70px rgba(45,191,176,0.35),
-    0 0 120px rgba(45,191,176,0.15);
 }
 
 .hero-sub {
