@@ -875,6 +875,7 @@ footer p { color: rgba(255,255,255,0.45); font-size: 0.88rem; }
   /* Nav: icon left, wordmark centered, hamburger right */
   #navbar { border-bottom: none; }
   .nav-inner { position: relative; height: 80px; }
+  .mobile-menu { position: fixed; top: 80px; left: 0; right: 0; z-index: 1001; }
   .logo-img { display: block; }
   .logo-wordmark {
     position: absolute;
