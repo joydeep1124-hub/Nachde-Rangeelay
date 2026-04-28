@@ -888,7 +888,7 @@ footer p { color: rgba(255,255,255,0.45); font-size: 0.88rem; }
 
   section { padding: 64px 0; }
 
-  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
   .form-row { grid-template-columns: 1fr; }
   .stats-row { gap: 24px; }
 
