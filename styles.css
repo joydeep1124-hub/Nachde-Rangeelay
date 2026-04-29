@@ -871,12 +871,29 @@ footer p { color: rgba(255,255,255,0.45); font-size: 0.88rem; }
 
 @media (max-width: 640px) {
   .nav-links { display: none; }
-  .hamburger { display: flex; }
+  .hamburger { display: flex; position: relative; z-index: 10; }
 
   /* Nav: icon left, wordmark centered, hamburger right */
   #navbar { border-bottom: none; }
   .nav-inner { position: relative; height: 80px; }
-  .mobile-menu { position: fixed; top: 80px; left: 0; right: 0; z-index: 1001; }
+
+  /* Sliding mobile menu — max-height approach so display:none cascade conflict is avoided */
+  .mobile-menu {
+    display: flex;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    padding: 0 24px;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+  }
+  .mobile-menu.open {
+    max-height: 400px;
+    padding: 16px 24px 24px;
+  }
   .logo-img { display: block; }
   .logo-wordmark {
     position: absolute;
