@@ -176,6 +176,7 @@ h2 {
   object-fit: cover;
   z-index: 0;
   will-change: opacity;
+  pointer-events: none;
 }
 
 /* Cinematic grain overlay */

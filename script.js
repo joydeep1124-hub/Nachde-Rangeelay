@@ -8,14 +8,29 @@ window.addEventListener('scroll', () => {
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 hamburger.addEventListener('click', () => {
-  mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
+  mobileMenu.classList.toggle('open');
 });
 mobileMenu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => { mobileMenu.style.display = 'none'; });
+  link.addEventListener('click', () => { mobileMenu.classList.remove('open'); });
+});
+
+// ===== HERO VIDEO AUTOPLAY (LOW POWER MODE FALLBACK) =====
+const heroVideo = document.getElementById('hero-video');
+
+heroVideo.play().catch(() => {
+  // Autoplay blocked (Low Power Mode) — play on first user touch
+  const playOnTouch = () => {
+    heroVideo.play().catch(() => {});
+    document.removeEventListener('touchstart', playOnTouch);
+  };
+  document.addEventListener('touchstart', playOnTouch, { passive: true });
+});
+
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden && heroVideo.paused) heroVideo.play().catch(() => {});
 });
 
 // ===== HERO VIDEO SCROLL FADE =====
-const heroVideo = document.getElementById('hero-video');
 const heroContent = document.getElementById('heroContent');
 const heroSection = document.getElementById('hero');
 
