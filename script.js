@@ -4,14 +4,29 @@ window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
-// ===== MOBILE MENU =====
+// ===== MOBILE DRAWER =====
 const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
+const drawer = document.getElementById('mobileDrawer');
+const overlay = document.getElementById('menuOverlay');
+
+function openDrawer() {
+  drawer.classList.add('open');
+  overlay.classList.add('open');
+  hamburger.innerHTML = '&#10005;';
+}
+function closeDrawer() {
+  drawer.classList.remove('open');
+  overlay.classList.remove('open');
+  hamburger.innerHTML = '&#9776;';
+}
+
 hamburger.addEventListener('click', () => {
-  mobileMenu.classList.toggle('open');
+  drawer.classList.contains('open') ? closeDrawer() : openDrawer();
 });
-mobileMenu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => { mobileMenu.classList.remove('open'); });
+overlay.addEventListener('click', closeDrawer);
+document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+drawer.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', closeDrawer);
 });
 
 // ===== HERO VIDEO AUTOPLAY (LOW POWER MODE FALLBACK) =====

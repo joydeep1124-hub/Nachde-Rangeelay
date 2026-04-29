@@ -29,7 +29,13 @@
       </ul>
       <button class="hamburger" id="hamburger">&#9776;</button>
     </div>
-    <ul class="mobile-menu" id="mobileMenu">
+  </nav>
+
+  <!-- Mobile drawer + overlay (outside nav so no stacking context conflict) -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+  <nav class="mobile-drawer" id="mobileDrawer">
+    <button class="drawer-close" id="drawerClose">&#10005;</button>
+    <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#classes">Classes</a></li>
       <li><a href="#gallery">Gallery</a></li>
