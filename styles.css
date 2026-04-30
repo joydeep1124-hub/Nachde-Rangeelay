@@ -117,6 +117,20 @@ h2 {
 }
 .nav-links a:hover { color: var(--white); }
 
+.nav-hire {
+  border: 1.5px solid rgba(45,191,176,0.5) !important;
+  color: var(--teal-light) !important;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 600 !important;
+  transition: border-color 0.2s, background 0.2s, color 0.2s !important;
+}
+.nav-hire:hover {
+  border-color: var(--teal) !important;
+  background: rgba(45,191,176,0.1) !important;
+  color: var(--white) !important;
+}
+
 .nav-cta {
   background: var(--teal) !important;
   color: var(--white) !important;
