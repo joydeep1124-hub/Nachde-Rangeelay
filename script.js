@@ -5,28 +5,18 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 // ===== MOBILE DRAWER =====
-const hamburger = document.getElementById('hamburger');
+// Open/close handled via inline onclick on hamburger, overlay, and drawerClose.
+// This just handles closing when a nav link is tapped.
 const drawer = document.getElementById('mobileDrawer');
 const overlay = document.getElementById('menuOverlay');
+const hamburger = document.getElementById('hamburger');
 
-function openDrawer() {
-  drawer.classList.add('open');
-  overlay.classList.add('open');
-  hamburger.innerHTML = '&#10005;';
-}
-function closeDrawer() {
-  drawer.classList.remove('open');
-  overlay.classList.remove('open');
-  hamburger.innerHTML = '&#9776;';
-}
-
-hamburger.addEventListener('click', () => {
-  drawer.classList.contains('open') ? closeDrawer() : openDrawer();
-});
-overlay.addEventListener('click', closeDrawer);
-document.getElementById('drawerClose').addEventListener('click', closeDrawer);
 drawer.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', closeDrawer);
+  link.addEventListener('click', () => {
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+    hamburger.innerHTML = '&#9776;';
+  });
 });
 
 // ===== HERO VIDEO AUTOPLAY (LOW POWER MODE FALLBACK) =====

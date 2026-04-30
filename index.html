@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nachde Rangeelay | Bhangra Dance Academy</title>
-  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="stylesheet" href="styles.css?v=8" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Pacifico&display=swap" rel="stylesheet" />
 </head>
 <body>
@@ -32,9 +32,9 @@
   </nav>
 
   <!-- Mobile drawer + overlay (outside nav so no stacking context conflict) -->
-  <div class="menu-overlay" id="menuOverlay"></div>
+  <div class="menu-overlay" id="menuOverlay" onclick="document.getElementById('mobileDrawer').classList.remove('open');document.getElementById('menuOverlay').classList.remove('open');document.getElementById('hamburger').innerHTML='&#9776;'"></div>
   <nav class="mobile-drawer" id="mobileDrawer">
-    <button class="drawer-close" id="drawerClose">&#10005;</button>
+    <button class="drawer-close" id="drawerClose" onclick="document.getElementById('mobileDrawer').classList.remove('open');document.getElementById('menuOverlay').classList.remove('open');document.getElementById('hamburger').innerHTML='&#9776;'">&#10005;</button>
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#classes">Classes</a></li>
@@ -281,6 +281,6 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  <script src="script.js?v=3"></script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>
