@@ -929,6 +929,7 @@ footer p { color: rgba(255,255,255,0.45); font-size: 0.88rem; }
     height: 7rem;
     top: 50%;
     margin-top: -3.5rem;
+    pointer-events: none;
   }
   .logo-img { display: block; }
 
