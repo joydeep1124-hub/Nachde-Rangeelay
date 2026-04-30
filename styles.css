@@ -136,6 +136,9 @@ h2 {
   cursor: pointer;
   position: relative;
   z-index: 1002;
+  padding: 12px;
+  margin: -12px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* ===== MOBILE DRAWER ===== */
