@@ -974,7 +974,15 @@ footer p { color: rgba(255,255,255,0.45); font-size: 0.88rem; }
 
   section { padding: 64px 0; }
 
-  .classes-grid { gap: 12px; }
+  .classes-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .classes-grid > *:nth-child(1),
+  .classes-grid > *:nth-child(2),
+  .classes-grid > *:nth-child(3),
+  .classes-grid > *:nth-child(4),
+  .classes-grid > *:nth-child(5) { grid-column: auto; grid-row: auto; }
   .class-card { padding: 24px 16px; }
   .class-card h3 { font-size: 1.1rem; }
   .class-card p { font-size: 0.85rem; }
