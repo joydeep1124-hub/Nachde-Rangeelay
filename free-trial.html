@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Trial | Nachde Rangeelay</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:       #2DBFB0;
+      --teal-dark:  #1A9E92;
+      --teal-light: #6FD8D0;
+      --ink:        #111111;
+      --white:      #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #080808;
+      color: rgba(255,255,255,0.85);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .accent { color: var(--teal); }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      opacity: 0.8;
+      margin-bottom: 10px;
+    }
+
+    /* ===== NAV ===== */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(8,8,8,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 0 24px;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo-img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+    .logo-wordmark { height: 22px; }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+
+    .nav-cta {
+      background: var(--teal);
+      color: #fff !important;
+      padding: 9px 22px;
+      border-radius: 50px;
+      font-weight: 700 !important;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--teal-dark) !important; transform: translateY(-1px); }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.8);
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1100;
+    }
+    .menu-overlay.open { display: block; }
+
+    .mobile-drawer {
+      position: fixed;
+      top: 0; right: -100%;
+      width: 80%;
+      max-width: 320px;
+      height: 100vh;
+      background: #111;
+      z-index: 1200;
+      padding: 80px 32px 32px;
+      transition: right 0.3s ease;
+    }
+    .mobile-drawer.open { right: 0; }
+    .mobile-drawer ul { list-style: none; display: flex; flex-direction: column; gap: 24px; }
+    .mobile-drawer a { font-size: 1.1rem; font-weight: 600; color: rgba(255,255,255,0.8); }
+
+    .drawer-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    /* ===== HERO ===== */
+    .trial-hero {
+      padding: 160px 0 100px;
+      background: #080808;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .trial-hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -100px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(45,191,176,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .trial-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(245,166,35,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .trial-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .trial-hero-content h1 {
+      font-size: clamp(3rem, 7vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 16px;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .trial-hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.5);
+      max-width: 500px;
+      line-height: 1.75;
+      animation: fadeUp 0.8s 0.15s ease both;
+    }
+
+    /* ===== FORM SECTION ===== */
+    .form-section {
+      padding: 80px 0 120px;
+      background: #080808;
+    }
+
+    .form-card {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .form-card-inner {
+      background: #fff;
+      border-radius: 24px;
+      padding: 56px 48px;
+      color: var(--ink);
+    }
+
+    .form-card-inner h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .form-subtitle {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    .field { margin-bottom: 22px; }
+
+    .field label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .field label .optional {
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      color: #999;
+      font-size: 0.75rem;
+      margin-left: 4px;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #E8E8E8;
+      border-radius: 12px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: #FAFAFA;
+      transition: border-color 0.2s, background 0.2s;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .field input:focus,
+    .field select:focus {
+      border-color: var(--teal);
+      background: #fff;
+    }
+
+    .field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    /* Radio group */
+    .radio-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .radio-option { position: relative; }
+
+    .radio-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0; height: 0;
+    }
+
+    .radio-option label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 16px;
+      border: 2px solid #E8E8E8;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: none;
+      color: #444;
+      background: #FAFAFA;
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+      margin: 0;
+    }
+
+    .radio-option label::before {
+      content: '';
+      width: 18px; height: 18px;
+      border: 2px solid #D0D0D0;
+      border-radius: 50%;
+      flex-shrink: 0;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .radio-option input[type="radio"]:checked + label {
+      border-color: var(--teal);
+      background: rgba(45,191,176,0.06);
+      color: var(--teal-dark);
+    }
+
+    .radio-option input[type="radio"]:checked + label::before {
+      border-color: var(--teal);
+      background: var(--teal);
+      box-shadow: inset 0 0 0 3px #fff;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #F0F0F0;
+      margin: 30px 0;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--teal);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(45,191,176,0.3);
+      letter-spacing: 0.3px;
+      margin-top: 8px;
+    }
+
+    .btn-submit:hover {
+      background: var(--teal-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(45,191,176,0.4);
+    }
+
+    .btn-submit:active { transform: translateY(0); }
+
+    .form-note {
+      text-align: center;
+      font-size: 0.78rem;
+      color: #999;
+      margin-top: 14px;
+      line-height: 1.6;
+    }
+
+    /* Success state */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .success-icon { font-size: 3.5rem; margin-bottom: 16px; }
+
+    .form-success h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .form-success p {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #050505;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 8px;
+    }
+    .footer-logo span { color: var(--teal); }
+
+    footer p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.3);
+      margin-top: 4px;
+    }
+
+    footer a { color: rgba(255,255,255,0.4); }
+    footer a:hover { color: var(--teal); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .form-card-inner { padding: 36px 24px; }
+    }
+
+    @media (max-width: 480px) {
+      .trial-hero { padding: 130px 0 72px; }
+      .radio-group { grid-template-columns: 1fr; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <img src="https://lh3.googleusercontent.com/p/AF1QipP915x5KPzXp-ou4OJ7-yDQ6veZEssn727EOpRz=w240" alt="Nachde Rangeelay logo" class="logo-img" />
+        <img src="assets/NR-SCRPT-TEAL-FINAL.png" alt="Nachde Rangeelay" class="logo-wordmark" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#classes">Classes</a></li>
+        <li><a href="index.html#gallery">Gallery</a></li>
+        <li><a href="index.html#reviews">Reviews</a></li>
+        <li><a href="hire.html">Book Event</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Join Us</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" onclick="var d=document.getElementById('mobileDrawer'),o=document.getElementById('menuOverlay');d.classList.toggle('open');o.classList.toggle('open');this.innerHTML=d.classList.contains('open')?'&#10005;':'&#9776;'">&#9776;</button>
+    </div>
+  </nav>
+
+  <div class="menu-overlay" id="menuOverlay" onclick="document.getElementById('mobileDrawer').classList.remove('open');document.getElementById('menuOverlay').classList.remove('open');document.getElementById('hamburger').innerHTML='&#9776;'"></div>
+  <nav class="mobile-drawer" id="mobileDrawer">
+    <button class="drawer-close" onclick="document.getElementById('mobileDrawer').classList.remove('open');document.getElementById('menuOverlay').classList.remove('open');document.getElementById('hamburger').innerHTML='&#9776;'">&#10005;</button>
+    <ul>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#classes">Classes</a></li>
+      <li><a href="index.html#gallery">Gallery</a></li>
+      <li><a href="index.html#reviews">Reviews</a></li>
+      <li><a href="hire.html">Book Event</a></li>
+      <li><a href="index.html#contact">Join Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="trial-hero">
+    <div class="trial-hero-content">
+      <p class="section-label">Nachde Rangeelay</p>
+      <h1>Book Your<br/><span class="accent">Free Trial</span></h1>
+      <p class="trial-hero-sub">No commitment. Just come dance. Fill out the form below and we'll reach out to schedule your first class.</p>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section class="form-section">
+    <div class="form-card">
+      <div class="form-card-inner">
+        <h2>Tell Us About Yourself</h2>
+        <p class="form-subtitle">We'll get back to you within 24 hours to confirm your free trial class.</p>
+
+        <form id="trialForm">
+
+          <div class="field">
+            <label>Full Name</label>
+            <input type="text" placeholder="e.g. Gurpreet Kaur" required />
+          </div>
+
+          <div class="field">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="e.g. (647) 555-0192" required />
+          </div>
+
+          <div class="field">
+            <label>Email <span class="optional">(optional)</span></label>
+            <input type="email" placeholder="e.g. gurpreet@gmail.com" />
+          </div>
+
+          <hr class="divider" />
+
+          <div class="field">
+            <label>Which class interests you?</label>
+            <div class="radio-group">
+              <div class="radio-option">
+                <input type="radio" name="class" id="class-bhangra" value="Bhangra" required />
+                <label for="class-bhangra">Bhangra</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" name="class" id="class-gidha" value="Gidha" />
+                <label for="class-gidha">Gidha</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" name="class" id="class-dhol" value="Dhol" />
+                <label for="class-dhol">Dhol</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" name="class" id="class-unsure" value="Not sure yet" />
+                <label for="class-unsure">Not sure yet</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Age Group</label>
+            <select required>
+              <option value="" disabled selected>Select age group...</option>
+              <option>Child (5–12)</option>
+              <option>Teen (13–17)</option>
+              <option>Adult (18+)</option>
+              <option>Senior (55+)</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Prior dance experience? <span class="optional">(optional)</span></label>
+            <select>
+              <option value="" disabled selected>Select...</option>
+              <option>No experience — complete beginner</option>
+              <option>Some experience</option>
+              <option>Experienced dancer</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-submit">Book My Free Trial &rarr;</button>
+          <p class="form-note">We'll call or text you to confirm your spot. Sat Sri Akal 🙏</p>
+
+        </form>
+
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">🎉</div>
+          <h3>You're all set!</h3>
+          <p>We'll be in touch within 24 hours to schedule your free trial.<br/>Sat Sri Akal 🙏</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Nachde <span>Rangeelay</span></div>
+    <p>Bhangra Dance Academy · Brampton, Ontario</p>
+    <p><a href="tel:6473030038">(647) 303-0038</a></p>
+    <p style="margin-top: 20px;">© 2026 Nachde Rangeelay Academy. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    document.getElementById('mobileDrawer').querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileDrawer').classList.remove('open');
+        document.getElementById('menuOverlay').classList.remove('open');
+        document.getElementById('hamburger').innerHTML = '&#9776;';
+      });
+    });
+
+    const SUPABASE_URL = 'https://ehncoktssmxbtlmtcwyb.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_jK219GKnvBcmGo3zUqkh4A_3gA1K6bT';
+    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    const form = document.getElementById('trialForm');
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const nameEl   = form.querySelector('input[type="text"]');
+      const phoneEl  = form.querySelector('input[type="tel"]');
+      const emailEl  = form.querySelector('input[type="email"]');
+      const classEl  = form.querySelector('input[name="class"]:checked');
+      const selects  = form.querySelectorAll('select');
+      const ageEl    = selects[0];
+      const expEl    = selects[1];
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      const { error } = await sb.from('free_trial_submissions').insert({
+        name:       nameEl.value.trim(),
+        phone:      phoneEl.value.trim(),
+        email:      emailEl.value.trim() || null,
+        class:      classEl ? classEl.value : null,
+        age_group:  ageEl.value || null,
+        experience: expEl.value || null,
+      });
+
+      if (error) {
+        console.error('Submission error:', error);
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Book My Free Trial →';
+        alert('Something went wrong. Please try again or call us at (647) 303-0038.');
+        return;
+      }
+
+      form.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    });
+  </script>
+
+</body>
+</html>
