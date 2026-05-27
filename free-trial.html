@@ -560,6 +560,10 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    emailjs.init('aWGFCXvbI9jydiHX0');
+  </script>
   <script>
     window.addEventListener('scroll', () => {
       document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
@@ -610,6 +614,15 @@
         alert('Something went wrong. Please try again or call us at (647) 303-0038.');
         return;
       }
+
+      emailjs.send('service_b23tnax', 'template_lq4kkfk', {
+        name:          nameEl.value.trim(),
+        phone:         phoneEl.value.trim(),
+        email:         emailEl.value.trim() || 'Not provided',
+        class_interest: classEl ? classEl.value : 'Not selected',
+        age_group:     ageEl.value || 'Not provided',
+        experience:    expEl.value || 'Not provided',
+      }).catch(err => console.error('Email error:', err));
 
       form.style.display = 'none';
       document.getElementById('formSuccess').style.display = 'block';
