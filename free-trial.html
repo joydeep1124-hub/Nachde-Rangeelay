@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Free Trial | Nachde Rangeelay</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(s&&s.bootstrap&&(u=e._i.push([i,s,a]),u=e._i[u-1]),u.config=function(n){s=n},u.toString=function(t){var e="posthog";return"undefined"!=typeof a&&(e+="."+a),t||(e+=" (stub)"),e},u.people={},u.people.toString=function(){return"posthog.people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId setPersonPropertiesForFlags".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_rFXjzgxKWCcKg8ucRPd7QasMHprc3Xvd4o4pjkTpDXKM', { api_host: 'https://us.i.posthog.com', person_profiles: 'identified_only' });
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -584,6 +588,22 @@
     const form = document.getElementById('trialForm');
     const submitBtn = form.querySelector('button[type="submit"]');
 
+    let formStarted = false;
+    let formSubmitted = false;
+
+    form.addEventListener('focusin', () => {
+      if (!formStarted) {
+        formStarted = true;
+        posthog.capture('free_trial_form_started');
+      }
+    }, { once: false });
+
+    window.addEventListener('beforeunload', () => {
+      if (formStarted && !formSubmitted) {
+        posthog.capture('free_trial_form_abandoned');
+      }
+    });
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
@@ -624,6 +644,8 @@
         experience:    expEl.value || 'Not provided',
       }).catch(err => console.error('Email error:', err));
 
+      formSubmitted = true;
+      posthog.capture('free_trial_form_submitted');
       form.style.display = 'none';
       document.getElementById('formSuccess').style.display = 'block';
     });
