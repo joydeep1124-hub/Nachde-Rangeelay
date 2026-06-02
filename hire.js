@@ -30,3 +30,33 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 revealEls.forEach(el => revealObserver.observe(el));
+
+// ===== VIDEO REEL =====
+function initReel(id) {
+  const reel = document.getElementById(id);
+  if (!reel) return;
+  const videos = Array.from(reel.querySelectorAll('video'));
+  const dotsEl = reel.querySelector('.reel-dots');
+  let current = 0;
+
+  videos.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.className = 'reel-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(dot);
+  });
+
+  function goTo(index) {
+    videos[current].classList.remove('active');
+    videos[current].pause();
+    dotsEl.children[current].classList.remove('active');
+    current = (index + videos.length) % videos.length;
+    videos[current].classList.add('active');
+    dotsEl.children[current].classList.add('active');
+  }
+
+  reel.querySelector('.reel-prev').addEventListener('click', () => goTo(current - 1));
+  reel.querySelector('.reel-next').addEventListener('click', () => goTo(current + 1));
+}
+
+initReel('reel-5');

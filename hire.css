@@ -156,8 +156,84 @@ body.hire-page #navbar.scrolled {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
-  height: 220px;
+  grid-auto-rows: 220px;
 }
+
+/* ===== REAL MEDIA CELLS ===== */
+.media-cell {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #111;
+}
+
+.media-item {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===== VIDEO REEL (carousel) ===== */
+.video-reel {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #111;
+}
+
+.video-reel video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+.video-reel video.active {
+  display: block;
+}
+
+.reel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.55);
+  border: none;
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.reel-btn:hover { background: rgba(0,0,0,0.85); }
+.reel-prev { left: 10px; }
+.reel-next { right: 10px; }
+
+.reel-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 7px;
+  z-index: 10;
+}
+
+.reel-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.reel-dot.active { background: var(--teal); }
 
 .media-placeholder {
   border-radius: 12px;
@@ -261,7 +337,6 @@ body.hire-page .reveal.visible {
 @media (max-width: 768px) {
   .formation-media-grid {
     grid-template-columns: 1fr 1fr;
-    height: auto;
     grid-auto-rows: 160px;
   }
   .media-wide {
