@@ -60,3 +60,27 @@ function initReel(id) {
 }
 
 initReel('reel-5');
+
+// ===== GALLERY VIDEOS (hover to play, stop at 12s) =====
+document.querySelectorAll('.gallery-vid').forEach(cell => {
+  const video = cell.querySelector('video');
+  let timer = null;
+
+  cell.addEventListener('mouseenter', () => {
+    video.currentTime = 0;
+    video.play();
+    cell.classList.add('playing');
+    timer = setTimeout(() => {
+      video.pause();
+      video.currentTime = 0;
+      cell.classList.remove('playing');
+    }, 12000);
+  });
+
+  cell.addEventListener('mouseleave', () => {
+    clearTimeout(timer);
+    video.pause();
+    video.currentTime = 0;
+    cell.classList.remove('playing');
+  });
+});
