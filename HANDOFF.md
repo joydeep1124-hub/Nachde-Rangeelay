@@ -90,7 +90,8 @@ All gallery clips must be ≥12s because `hire.js` plays a 12-second preview on 
 - [x] Video carousel for 5-performer block (4 videos)
 
 ## What's Left
-- [ ] **Test live email** — submit a test on /free-trial.html, confirm email lands in nachderangeelay@gmail.com
+- [x] **Test live email** — emails arrive at nachderangeelay@gmail.com (confirmed June 2026)
+- [ ] **Confirm full email body** — code now packs phone/email/class/age/experience into the default template's `{{message}}` field, so all details show without editing the EmailJS template. Submit a test and confirm the message block is readable (line breaks intact).
 - [ ] **Contact form email** — wire EmailJS into contact form on index.html (script.js)
 - [ ] **6 performer media** — client's unnamed videos are in the gallery; move/add them to the 6-performer block
 - [ ] **Gallery photos** — currently placeholder images, swap for real performance photos
