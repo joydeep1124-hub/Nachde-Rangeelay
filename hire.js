@@ -60,6 +60,7 @@ function initReel(id) {
 }
 
 initReel('reel-5');
+initReel('reel-6');
 
 // ===== GALLERY VIDEOS (hover to play, stop at 12s) =====
 document.querySelectorAll('.gallery-vid').forEach(cell => {

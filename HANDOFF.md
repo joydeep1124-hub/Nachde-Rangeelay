@@ -63,9 +63,11 @@ Videos are trimmed to 5 seconds and stored in `media/` as MP4.
 | Formation | Media in use |
 |---|---|
 | 4 Performers | `4 pair.JPG`, `4 pair (2).JPG`, `4 performer vid.mp4` |
-| 5 Performers | `5 performer vid.mp4`, `5 performer vid (2).mp4`, `5 performer.mp4`, `5 performer..mp4` (carousel) |
+| 5 Performers | 6-video carousel: `5 performer vid.mp4`, `5 performer vid (2).mp4`, `5 performer.mp4`, `5 performer..mp4`, `5 performers.mp4`, `5 performers (2).mp4` |
+| 6 Performers | 4-video carousel: `6 performers.mp4`, `6 performers (2).mp4`, `6 performers (3).mp4`, `6 performers (4).mp4` |
 | 8 Performers | `8 performers.MP4`, `8 performer vid.MP4` |
-| 6 Performers | Placeholder — no media yet (client has unnamed videos, currently in the gallery; add to block later) |
+
+New 5/6-performer clips were trimmed to ~13s (`5 performers (2)` is 11.6s, kept full) and web-compressed from the renamed source MOVs. Both the 5 and 6 blocks use the `initReel()` carousel in `hire.js`.
 
 The 5-performer block has a video carousel with prev/next arrows and dot indicators.
 
@@ -93,7 +95,7 @@ All gallery clips must be ≥12s because `hire.js` plays a 12-second preview on 
 - [x] **Test live email** — emails arrive at nachderangeelay@gmail.com (confirmed June 2026)
 - [ ] **Confirm full email body** — code now packs phone/email/class/age/experience into the default template's `{{message}}` field, so all details show without editing the EmailJS template. Submit a test and confirm the message block is readable (line breaks intact).
 - [ ] **Contact form email** — wire EmailJS into contact form on index.html (script.js)
-- [ ] **6 performer media** — client's unnamed videos are in the gallery; move/add them to the 6-performer block
+- [x] **6 performer media** — 4-video carousel added to the 6-performer block
 - [ ] **Gallery photos** — currently placeholder images, swap for real performance photos
 - [ ] **New background video** — client has high quality video on phone, transfer via USB, replace `assets/bhangra-bg.mp4`
 - [ ] **Supabase uptime** — consider upgrading to Pro or setting up a cron ping (cron-job.org) before client handoff
