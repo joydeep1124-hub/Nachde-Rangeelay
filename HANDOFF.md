@@ -5,7 +5,7 @@
 - **GitHub:** https://github.com/joydeep1124-hub/Nachde-Rangeelay
 - **Client email:** nachderangeelay@gmail.com
 - **Phone:** (647) 303-0038
-- **Location:** 55 Princess Valley Crescent, Brampton, ON L6P 2C5
+- **Location:** 111 Zenway Blvd, Woodbridge, ON L4H 3H9
 
 ---
 
@@ -41,6 +41,7 @@
 - Added to: `index.html`, `hire.html`, `free-trial.html`
 - Tracks: page views (automatic), `free_trial_form_started`, `free_trial_form_abandoned`, `free_trial_form_submitted`
 - Dashboard: https://us.posthog.com
+- **Account:** joydeepside@gmail.com (PostHog org: "bricks")
 
 ---
 
