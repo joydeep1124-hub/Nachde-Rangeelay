@@ -95,8 +95,8 @@ All gallery clips must be ≥12s because `hire.js` plays a 12-second preview on 
 ## What's Left
 - [x] **Test live email** — emails arrive at nachderangeelay@gmail.com (confirmed June 2026)
 - [ ] **Confirm full email body** — code now packs phone/email/class/age/experience into the default template's `{{message}}` field, so all details show without editing the EmailJS template. Submit a test and confirm the message block is readable (line breaks intact).
-- [ ] **Contact form email** — wire EmailJS into contact form on index.html (script.js)
+- [x] **Contact form email** — EmailJS now fires on the homepage contact form (index.html loads EmailJS + init; `script.js` sends after the Supabase insert, same service/template as the free-trial form). Submit a live test to confirm the email arrives.
 - [x] **6 performer media** — 4-video carousel added to the 6-performer block
 - [ ] **Gallery photos** — currently placeholder images, swap for real performance photos
 - [ ] **New background video** — client has high quality video on phone, transfer via USB, replace `assets/bhangra-bg.mp4`
-- [ ] **Supabase uptime** — consider upgrading to Pro or setting up a cron ping (cron-job.org) before client handoff
+- [x] **Supabase uptime** — daily GitHub Actions cron (`.github/workflows/keep-supabase-awake.yml`) pings the DB at 08:17 UTC so the free-tier project never pauses. Upgrading to Pro is still optional for guaranteed uptime, but no longer required to prevent auto-pause.
