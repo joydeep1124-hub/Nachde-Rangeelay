@@ -121,6 +121,26 @@ form.addEventListener('submit', async (e) => {
     return;
   }
 
+  // Email notification to nachderangeelay@gmail.com (mirrors free-trial form)
+  const submittedAt = new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
+  const details =
+    'Phone: '     + phoneEl.value.trim() + '\n' +
+    'Email: '     + (emailEl.value.trim() || 'Not provided') + '\n' +
+    'Interested in: ' + (interestEl.value || 'Not selected') + '\n' +
+    'Message: '   + (messageEl.value.trim() || 'None');
+
+  emailjs.send('service_b23tnax', 'template_lq4kkfk', {
+    // Maps to the default template's {{title}}, {{name}}, {{time}}, {{message}}
+    title:   'Contact form — ' + nameEl.value.trim(),
+    name:    nameEl.value.trim(),
+    time:    submittedAt,
+    message: details,
+    // Individual fields kept in case the template is upgraded to use them directly
+    phone:    phoneEl.value.trim(),
+    email:    emailEl.value.trim() || 'Not provided',
+    interest: interestEl.value || 'Not selected',
+  }).catch(err => console.error('Email error:', err));
+
   form.style.display = 'none';
   formSuccess.classList.remove('hidden');
 });

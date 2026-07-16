@@ -1,0 +1,28 @@
+name: Keep Supabase awake
+
+# Supabase free tier pauses a project after 7 days of no activity.
+# This runs a tiny read against the database daily so it never pauses.
+# The anon key below is the public "publishable" key (already exposed in the
+# site's client-side JS), so it is safe to keep in the workflow.
+
+on:
+  schedule:
+    - cron: '17 8 * * *'   # every day at 08:17 UTC
+  workflow_dispatch:         # allows manual "Run workflow" from the Actions tab
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase REST
+        run: |
+          URL="https://ehncoktssmxbtlmtcwyb.supabase.co/rest/v1/contact_submissions?select=id&limit=1"
+          KEY="sb_publishable_jK219GKnvBcmGo3zUqkh4A_3gA1K6bT"
+          code=$(curl -s -o /dev/null -w "%{http_code}" "$URL" \
+            -H "apikey: $KEY" -H "Authorization: Bearer $KEY")
+          echo "Supabase responded with HTTP $code"
+          # 2xx = healthy. Anything else fails the run so it shows up in Actions.
+          if [ "$code" -lt 200 ] || [ "$code" -ge 300 ]; then
+            echo "::error::Supabase ping failed (HTTP $code)"
+            exit 1
+          fi

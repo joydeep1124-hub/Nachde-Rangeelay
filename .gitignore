@@ -4,3 +4,10 @@
 node_modules/
 
 .vercel
+
+# Large raw media (kept locally only, too big for GitHub)
+media/
+*.MOV
+*.mov
+*.HEIC
+*.heic
